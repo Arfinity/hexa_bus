@@ -36111,6 +36111,8 @@ var _helper = __webpack_require__(587);
 
 var _async_get = __webpack_require__(563);
 
+var _urlList = __webpack_require__(603);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36533,9 +36535,8 @@ var InfoLine = function (_Component3) {
     key: 'fetchBusInfo',
     value: function fetchBusInfo() {
       var dispatch = this.props.dispatch;
-      //const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=unist';
 
-      var url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=unist'; // terneling
+      var url = _urlList.URL_LIST.API.DETAIL_INFO + '?mode=unist';
       dispatch((0, _action.changeFetchLoading)(true));
       dispatch((0, _action.changeNavLoading)(true));
       var callback = function callback(response) {
@@ -36752,6 +36753,8 @@ var _modal = __webpack_require__(592);
 
 var _modal2 = _interopRequireDefault(_modal);
 
+var _urlList = __webpack_require__(603);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36881,9 +36884,8 @@ var Navigation = function (_Component3) {
     value: function fetchBusInfo(mode) {
       var loadingFetch = this.props.loadingFetch;
       var dispatch = this.props.dispatch;
-      //const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode='+mode;
 
-      var url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=' + mode;
+      var url = _urlList.URL_LIST.API.DETAIL_INFO + '?mode=' + mode;
       /* Deprecated
       if(loadingFetch) {
         alert('이미 로딩중입니다.');
@@ -37051,7 +37053,7 @@ var Navigation = function (_Component3) {
         _react2.default.createElement(
           'div',
           { className: 'kakao-share', onClick: this.shareKaKaoTalk.bind(this) },
-          _react2.default.createElement('img', { src: 'kakao.png' })
+          _react2.default.createElement('img', { src: '/dist/assets/kakao.png' })
         ),
         _react2.default.createElement('div', { className: 'goto-top', onClick: this.gotoTop.bind(this) })
       );
@@ -37059,7 +37061,8 @@ var Navigation = function (_Component3) {
   }, {
     key: 'fetchBusMenu',
     value: function fetchBusMenu() {
-      var url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_menu_info.php'; //Terneling
+      //const url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_menu_info.php'; //Terneling
+      var url = _urlList.URL_LIST.API.BUS_LIST;
       var dispatch = this.props.dispatch;
 
 
@@ -37086,7 +37089,8 @@ var Navigation = function (_Component3) {
           dispatch = _props5.dispatch;
 
       if (!isNoticeFetched) {
-        var url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=notice';
+        //const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=notice';
+        var url = _urlList.URL_LIST.API.DETAIL_INFO + '?mode=notice';
         var callback = function callback(response) {
           dispatch((0, _action.fetchNotice)(response.data));
           console.log(response.data);
@@ -38492,6 +38496,26 @@ function spring(val, config) {
 }
 
 module.exports = exports['default'];
+
+/***/ }),
+/* 603 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var BASE = exports.BASE = 'http://bus.hexa.pro/bus/';
+
+var URL_LIST = exports.URL_LIST = {
+  BASE: BASE,
+  API: {
+    BUS_LIST: BASE + 'get_menu_info.php',
+    DETAIL_INFO: BASE + 'get_ajax_inf_ohj.php'
+  }
+};
 
 /***/ })
 /******/ ]);

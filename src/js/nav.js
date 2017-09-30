@@ -5,6 +5,7 @@ import {fetchBusInfo, changeNavLoading, changeSideBarState,
   fetchDefaultMenu} from './main/redux/action';
 import {getFetch} from './main/async_get';
 import Modal from './main/modal';
+import {URL_LIST} from './urlList';
 
 class Hamburger extends Component {
   constructor(props) {
@@ -76,8 +77,7 @@ class Navigation extends Component {
   fetchBusInfo(mode) {
     const {loadingFetch} = this.props;
     const {dispatch} = this.props;
-    //const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode='+mode;
-    const url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode='+mode;
+    const url = URL_LIST.API.DETAIL_INFO + '?mode='+mode;
     /* Deprecated
     if(loadingFetch) {
       alert('이미 로딩중입니다.');
@@ -200,7 +200,7 @@ class Navigation extends Component {
           </div>
         </div>
         <div className="kakao-share" onClick={::this.shareKaKaoTalk}>
-          <img src="kakao.png"/>
+          <img src="/dist/assets/kakao.png"/>
         </div>
         <div className="goto-top" onClick={::this.gotoTop}>
         </div>
@@ -208,7 +208,8 @@ class Navigation extends Component {
   }
 
   fetchBusMenu() {
-    const url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_menu_info.php'; //Terneling
+    //const url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_menu_info.php'; //Terneling
+    const url = URL_LIST.API.BUS_LIST;
     const {dispatch} = this.props;
 
     const callback = (response) => {
@@ -230,7 +231,8 @@ class Navigation extends Component {
     window.addEventListener('scroll', ::this.handleScroll);
     const {isNoticeFetched, dispatch} = this.props;
     if(!isNoticeFetched) {
-      const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=notice';
+      //const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=notice';
+      const url = URL_LIST.API.DETAIL_INFO + '?mode=notice';
       const callback = (response) => {
         dispatch(fetchNotice(response.data));
         console.log(response.data);

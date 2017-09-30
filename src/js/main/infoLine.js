@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {fetchBusInfo, changeFetchLoading, changeNavLoading} from './redux/action';
 import {zeroFill} from '../helper';
 import {getFetch} from './async_get';
+import {URL_LIST} from '../urlList';
 
 const titleStyle = {
   backgroundImage: 'url(bus.jpg)',
@@ -250,8 +251,7 @@ class InfoLine extends Component {
 
   fetchBusInfo() {
     const {dispatch} = this.props;
-    //const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=unist';
-    const url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=unist'; // terneling
+    const url = URL_LIST.API.DETAIL_INFO + '?mode=unist';
     dispatch(changeFetchLoading(true));
     dispatch(changeNavLoading(true));
     const callback = (response) => {
