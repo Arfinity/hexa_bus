@@ -799,3 +799,69 @@ html, body {
     stroke-dashoffset: 300; }
   100% {
     stroke-dashoffset: 300; } }
+
+.btn {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+  color: #565656;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 15px 25px;
+  box-shadow: none;
+  font-weight: 400;
+  cursor: pointer; }
+  .btn.blue {
+    color: #fff;
+    background-color: #6facd5; }
+
+.intro .hero {
+  background-size: cover;
+  background-position: center center;
+  width: 100%; }
+  .intro .hero .inner-wrapper {
+    padding-bottom: 100vh;
+    background-color: rgba(0, 0, 0, 0.4); }
+    .intro .hero .inner-wrapper .content {
+      transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+      position: absolute; }
+      .intro .hero .inner-wrapper .content > *:not(.btn) {
+        color: #eee; }
+      .intro .hero .inner-wrapper .content h1 {
+        font-size: 50px;
+        margin: 0 0 25px 0; }
+      .intro .hero .inner-wrapper .content h5 {
+        font-size: 25px;
+        margin: 0 0 5px 0; }
+      .intro .hero .inner-wrapper .content p {
+        font-size: 17px;
+        margin: 0 0 25px 0; }
+
+.intro .desktop-info {
+  padding: 40px 0; }
+  @media screen and (min-width: 1181px) {
+    .intro .desktop-info .img-block, .intro .desktop-info .desc-block {
+      width: 50%;
+      display: inline-block;
+      vertical-align: middle; }
+    .intro .desktop-info .desc-block {
+      padding: 15px; } }
+  .intro .desktop-info .img-block img {
+    width: 80%; }
+  .intro .desktop-info .desc-block {
+    text-align: center; }
+  .intro .desktop-info h1 {
+    font-size: 24px;
+    color: #565656;
+    margin: 0 0 10px 0; }
+  .intro .desktop-info p {
+    font-size: 14px;
+    color: #747474;
+    margin: 0 0 20px 0;
+    font-weight: 200;
+    line-height: 1.4; }

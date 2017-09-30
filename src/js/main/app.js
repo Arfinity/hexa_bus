@@ -10,7 +10,7 @@ const heroStyle = {
   backgroundImage: 'url(hero.jpg)',
 }
 
-class Footer extends Component {
+export class Footer extends Component {
   constructor(props) {
     super(props);
   }

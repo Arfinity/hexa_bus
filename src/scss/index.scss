@@ -421,3 +421,85 @@
     stroke-dashoffset: 300;
   }
 }
+
+.btn {
+  border: 1px solid rgba(0,0,0,.4);
+  background-color: #fff;
+  color: #565656;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 15px 25px;
+  box-shadow: none;
+  font-weight: 400;
+  cursor: pointer;
+  &.blue {
+    color: #fff;
+    background-color: #6facd5;
+  }
+}
+
+.intro {
+  .hero {
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    .inner-wrapper {
+      padding-bottom: 100vh;
+      background-color: rgba(0,0,0,.4);
+      .content {
+        @include CenterAlign();
+        > *:not(.btn) {
+          color: #eee;
+        }
+        h1 {
+          font-size: 50px;
+          margin: 0 0 25px 0;
+        }
+        h5 {
+          font-size: 25px;
+          margin: 0 0 5px 0;
+        }
+        p {
+          font-size: 17px;
+          margin: 0 0 25px 0;
+        }
+      }
+    }
+  }
+  .desktop-info {
+    padding: 40px 0;
+
+    @include media('desktop') {
+      .img-block, .desc-block {
+        width: 50%;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .desc-block {
+        padding: 15px;
+      }
+    }
+    .img-block {
+      img {
+        width: 80%;
+      }
+    }
+    .desc-block {
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+      color: #565656;
+      margin: 0 0 10px 0;
+    }
+    p {
+      font-size: 14px;
+      color: #747474;
+      margin: 0 0 20px 0;
+      font-weight: 200;
+      line-height: 1.4;
+      
+    }
+  }
+}
+

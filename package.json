@@ -25,6 +25,7 @@
     "babel-core": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-stage-2": "^6.24.1",
+    "ejs": "^2.5.7",
     "extract-text-webpack-plugin": "^2.1.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

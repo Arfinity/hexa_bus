@@ -9,6 +9,7 @@ module.exports = [
     {
         entry: {
             index: './src/js/index.js',
+            intro: './src/js/intro/index.js',
         },
 
         output: {
