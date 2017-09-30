@@ -34823,7 +34823,7 @@ var Intro = function (_Component) {
             _react2.default.createElement(
               'div',
               { className: 'img-block' },
-              _react2.default.createElement('img', { src: 'mac_app.png' })
+              _react2.default.createElement('img', { src: imageUrl.macApp })
             ),
             _react2.default.createElement(
               'div',

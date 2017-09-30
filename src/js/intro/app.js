@@ -41,7 +41,7 @@ class Intro extends Component {
         <section className="desktop-info">
           <div className="container">
             <div className="img-block">
-              <img src="mac_app.png"/>
+              <img src={imageUrl.macApp}/>
             </div>
             <div className="desc-block">
               <h1>이젠 웹이 아니라 컴퓨터에서 확인하세요.</h1>
