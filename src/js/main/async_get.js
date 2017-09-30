@@ -2,14 +2,14 @@ import axios from 'axios';
 //axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 function preRequest(url, callback) {
-  axios.get(url, {
+  /*axios.get(url, {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Request-Headers': 'X-Requested-With, accept, content-type',
     },
-  }).then(function(response) {
+  }).then(function(response) {*/
     callback();
-  });
+  //});
 }
 
 export function getFetch(url, callback) {

@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import {Footer} from '../main/app';
 
 const imageUrl = {
-  introHero: 'bus_stop.jpg',
-  macApp: 'mac_app.png',
+  introHero: 'dist/assets/bus_stop.jpg',
+  macApp: 'dist/assets/mac_app.png',
 };
 
 

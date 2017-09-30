@@ -34675,14 +34675,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 function preRequest(url, callback) {
-  _axios2.default.get(url, {
+  /*axios.get(url, {
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Request-Headers': 'X-Requested-With, accept, content-type'
-    }
-  }).then(function (response) {
-    callback();
-  });
+      'Access-Control-Request-Headers': 'X-Requested-With, accept, content-type',
+    },
+  }).then(function(response) {*/
+  callback();
+  //});
 }
 
 function getFetch(url, callback) {
@@ -34753,8 +34753,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var imageUrl = {
-  introHero: 'bus_stop.jpg',
-  macApp: 'mac_app.png'
+  introHero: 'dist/assets/bus_stop.jpg',
+  macApp: 'dist/assets/mac_app.png'
 };
 
 var Intro = function (_Component) {
@@ -37149,7 +37149,6 @@ var Navigation = function (_Component3) {
 
 
       var callback = function callback(response) {
-        console.log(response.data);
         dispatch((0, _action.fetchDefaultMenu)(response.data));
       };
 

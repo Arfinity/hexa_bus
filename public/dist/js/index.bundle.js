@@ -34675,14 +34675,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 function preRequest(url, callback) {
-  _axios2.default.get(url, {
+  /*axios.get(url, {
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Request-Headers': 'X-Requested-With, accept, content-type'
-    }
-  }).then(function (response) {
-    callback();
-  });
+      'Access-Control-Request-Headers': 'X-Requested-With, accept, content-type',
+    },
+  }).then(function(response) {*/
+  callback();
+  //});
 }
 
 function getFetch(url, callback) {
@@ -37067,7 +37067,6 @@ var Navigation = function (_Component3) {
 
 
       var callback = function callback(response) {
-        console.log(response.data);
         dispatch((0, _action.fetchDefaultMenu)(response.data));
       };
 

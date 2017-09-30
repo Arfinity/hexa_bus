@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var path = require('path');
 
 var PORT = 3000;
 var HOST = '0.0.0.0';
@@ -7,7 +8,7 @@ var HOST = '0.0.0.0';
 app.use(express.static('../public/'));
 app.use(express.static('./'));
 
-app.set('views', __dirname);
+app.set('views', __dirname + '/../public/');
 app.engine('html', require('ejs').renderFile);
 
 app.get('/', function(req, res) {

@@ -213,7 +213,6 @@ class Navigation extends Component {
     const {dispatch} = this.props;
 
     const callback = (response) => {
-      console.log(response.data);
       dispatch(fetchDefaultMenu(response.data));
     }
 
