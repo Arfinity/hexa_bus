@@ -185,7 +185,7 @@ class Navigation extends Component {
         </section>
         <section className="center-align">
           <div className="item">
-            <HeXASVG/>
+            HeXA.Bus
           </div>
         </section>
         <div style={sideBarStyle} 

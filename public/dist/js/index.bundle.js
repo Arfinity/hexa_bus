@@ -18264,7 +18264,7 @@ var Navigation = function (_Component3) {
           _react2.default.createElement(
             'div',
             { className: 'item' },
-            _react2.default.createElement(HeXASVG, null)
+            'HeXA.Bus'
           )
         ),
         _react2.default.createElement(
