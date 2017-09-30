@@ -2,7 +2,8 @@ import 'babel-polyfill';
 import {combineReducers} from 'redux';
 import {FETCH_BUS_INFO, CHANGE_FETCH_LOADING, 
   CHANGE_NAV_LOADING, CHANGE_NOTICE_STATE, FETCH_NOTICE,
-  START_SWIPE, CHANGE_SWIPE_WIDTH, CHANGE_SIDE_BAR_STATE} from './action';
+  START_SWIPE, CHANGE_SWIPE_WIDTH, CHANGE_SIDE_BAR_STATE,
+  FETCH_DEFAULT_MENU} from './action';
 
 const initialState = {
   navLoading: true,
@@ -13,6 +14,7 @@ const initialState = {
   isSwipeStart: false,
   swipeWidth: 0,
   isSidebarOpen: false,
+  navMenu: [],
 };
 
 function basicStore(state = initialState, action) {
@@ -39,6 +41,9 @@ function basicStore(state = initialState, action) {
       return Object.assign({}, state, newVal);
     case CHANGE_SIDE_BAR_STATE:
       newVal['isSidebarOpen'] = action.state;
+      return Object.assign({}, state, newVal);
+    case FETCH_DEFAULT_MENU:
+      newVal['navMenu'] = action.menu;
       return Object.assign({}, state, newVal);
     default:
       return state;
@@ -71,6 +76,5 @@ const store = combineReducers({
   basicStore, busStore
 });
 
-console.log(store);
 export default store;
 

@@ -5312,6 +5312,7 @@ exports.fetchNotice = fetchNotice;
 exports.startSwipe = startSwipe;
 exports.changeSwipeWidth = changeSwipeWidth;
 exports.changeSideBarState = changeSideBarState;
+exports.fetchDefaultMenu = fetchDefaultMenu;
 var FETCH_BUS_INFO = exports.FETCH_BUS_INFO = 'FETCH_BUS_INFO';
 var CHANGE_NAV_LOADING = exports.CHANGE_NAV_LOADING = 'CHANGE_NAV_LOADING';
 var CHANGE_FETCH_LOADING = exports.CHANGE_FETCH_LOADING = 'CHANGE_FETCH_LOADING';
@@ -5320,6 +5321,7 @@ var FETCH_NOTICE = exports.FETCH_NOTICE = 'FETCH_NOTICE';
 var START_SWIPE = exports.START_SWIPE = 'START_SWIPE';
 var CHANGE_SWIPE_WIDTH = exports.CHANGE_SWIPE_WIDTH = 'CHANGE_SWIPE_WIDTH';
 var CHANGE_SIDE_BAR_STATE = exports.CHANGE_SIDE_BAR_STATE = 'CHANGE_SIDE_BAR_STATE';
+var FETCH_DEFAULT_MENU = exports.FETCH_DEFAULT_MENU = 'FETCH_DEFAULT_MENU';
 
 function fetchBusInfo(info) {
   return {
@@ -5374,6 +5376,13 @@ function changeSideBarState(state) {
   return {
     type: CHANGE_SIDE_BAR_STATE,
     state: state
+  };
+}
+
+function fetchDefaultMenu(menu) {
+  return {
+    type: FETCH_DEFAULT_MENU,
+    menu: menu
   };
 }
 
@@ -16302,7 +16311,8 @@ var initialState = {
   notices: [],
   isSwipeStart: false,
   swipeWidth: 0,
-  isSidebarOpen: false
+  isSidebarOpen: false,
+  navMenu: []
 };
 
 function basicStore() {
@@ -16332,6 +16342,9 @@ function basicStore() {
       return Object.assign({}, state, newVal);
     case _action.CHANGE_SIDE_BAR_STATE:
       newVal['isSidebarOpen'] = action.state;
+      return Object.assign({}, state, newVal);
+    case _action.FETCH_DEFAULT_MENU:
+      newVal['navMenu'] = action.menu;
       return Object.assign({}, state, newVal);
     default:
       return state;
@@ -16366,7 +16379,6 @@ var store = (0, _redux.combineReducers)({
   basicStore: basicStore, busStore: busStore
 });
 
-console.log(store);
 exports.default = store;
 
 /***/ }),
@@ -17756,8 +17768,9 @@ var InfoLine = function (_Component3) {
     key: 'fetchBusInfo',
     value: function fetchBusInfo() {
       var dispatch = this.props.dispatch;
+      //const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=unist';
 
-      var url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=unist';
+      var url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=unist'; // terneling
       dispatch((0, _action.changeFetchLoading)(true));
       dispatch((0, _action.changeNavLoading)(true));
       var callback = function callback(response) {
@@ -17968,8 +17981,6 @@ var _reactRedux = __webpack_require__(68);
 
 var _action = __webpack_require__(78);
 
-var _config = __webpack_require__(161);
-
 var _async_get = __webpack_require__(160);
 
 var _modal = __webpack_require__(261);
@@ -18105,8 +18116,9 @@ var Navigation = function (_Component3) {
     value: function fetchBusInfo(mode) {
       var loadingFetch = this.props.loadingFetch;
       var dispatch = this.props.dispatch;
+      //const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode='+mode;
 
-      var url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=' + mode;
+      var url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=' + mode;
       /* Deprecated
       if(loadingFetch) {
         alert('이미 로딩중입니다.');
@@ -18147,7 +18159,9 @@ var Navigation = function (_Component3) {
     value: function renderMenu() {
       var _this4 = this;
 
-      return _config.stopMenu.map(function (each) {
+      var navMenu = this.props.navMenu;
+
+      return navMenu.map(function (each) {
         var type = each.type,
             name = each.name,
             param = each.param;
@@ -18278,10 +18292,29 @@ var Navigation = function (_Component3) {
       );
     }
   }, {
+    key: 'fetchBusMenu',
+    value: function fetchBusMenu() {
+      var url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_menu_info.php'; //Terneling
+      var dispatch = this.props.dispatch;
+
+
+      var callback = function callback(response) {
+        console.log(response.data);
+        dispatch((0, _action.fetchDefaultMenu)(response.data));
+      };
+
+      (0, _async_get.getFetch)(url, callback);
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      //KakaoTalk link share initializing
       Kakao.init('3b2fbd685845f6a067bebc7095aa69f5');
 
+      //Fetch Default Menu;
+      this.fetchBusMenu.call(this);
+
+      //Scroll Event Binding
       window.addEventListener('scroll', this.handleScroll.bind(this));
       var _props5 = this.props,
           isNoticeFetched = _props5.isNoticeFetched,
@@ -18315,7 +18348,8 @@ function mapPropsToState(state) {
     notices: state.basicStore.notices,
     isSwipeStart: state.basicStore.isSwipeStart,
     swipeWidth: state.basicStore.swipeWidth,
-    isSidebarOpen: state.basicStore.isSidebarOpen
+    isSidebarOpen: state.basicStore.isSidebarOpen,
+    navMenu: state.basicStore.navMenu
   };
 }
 

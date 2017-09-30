@@ -250,7 +250,8 @@ class InfoLine extends Component {
 
   fetchBusInfo() {
     const {dispatch} = this.props;
-    const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=unist';
+    //const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=unist';
+    const url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode=unist'; // terneling
     dispatch(changeFetchLoading(true));
     dispatch(changeNavLoading(true));
     const callback = (response) => {

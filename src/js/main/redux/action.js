@@ -6,6 +6,7 @@ export const FETCH_NOTICE = 'FETCH_NOTICE';
 export const START_SWIPE = 'START_SWIPE';
 export const CHANGE_SWIPE_WIDTH = 'CHANGE_SWIPE_WIDTH';
 export const CHANGE_SIDE_BAR_STATE = 'CHANGE_SIDE_BAR_STATE';
+export const FETCH_DEFAULT_MENU = 'FETCH_DEFAULT_MENU';
 
 export function fetchBusInfo(info) {
   return {
@@ -60,5 +61,12 @@ export function changeSideBarState(state) {
   return {
     type: CHANGE_SIDE_BAR_STATE,
     state,
+  }
+}
+
+export function fetchDefaultMenu(menu) {
+  return {
+    type: FETCH_DEFAULT_MENU,
+    menu
   }
 }

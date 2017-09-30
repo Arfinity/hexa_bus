@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchBusInfo, changeNavLoading, changeSideBarState,
-  changeFetchLoading, changeNoticeState, fetchNotice,} from './main/redux/action';
-import {stopMenu} from './main/config';
+  changeFetchLoading, changeNoticeState, fetchNotice,
+  fetchDefaultMenu} from './main/redux/action';
 import {getFetch} from './main/async_get';
 import Modal from './main/modal';
 
@@ -76,7 +76,8 @@ class Navigation extends Component {
   fetchBusInfo(mode) {
     const {loadingFetch} = this.props;
     const {dispatch} = this.props;
-    const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode='+mode;
+    //const url = 'http://hexa.hexa.pro/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode='+mode;
+    const url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_ajax_inf_ohj.php?mode='+mode;
     /* Deprecated
     if(loadingFetch) {
       alert('이미 로딩중입니다.');
@@ -109,7 +110,8 @@ class Navigation extends Component {
   }
 
   renderMenu() {
-    return stopMenu.map((each) => {
+    const {navMenu} = this.props;
+    return navMenu.map((each) => {
       const {type, name, param} = each;
       switch(type) {
         case 0:
@@ -204,10 +206,27 @@ class Navigation extends Component {
         </div>
       </div>);
   }
+
+  fetchBusMenu() {
+    const url = 'http://home.heak.xyz:4500/~lmte/bus.hexa/bus/get_menu_info.php'; //Terneling
+    const {dispatch} = this.props;
+
+    const callback = (response) => {
+      console.log(response.data);
+      dispatch(fetchDefaultMenu(response.data));
+    }
+
+    getFetch(url, callback);
+  }
   
   componentDidMount() {
+    //KakaoTalk link share initializing
     Kakao.init('3b2fbd685845f6a067bebc7095aa69f5');
 
+    //Fetch Default Menu;
+    ::this.fetchBusMenu();
+
+    //Scroll Event Binding
     window.addEventListener('scroll', ::this.handleScroll);
     const {isNoticeFetched, dispatch} = this.props;
     if(!isNoticeFetched) {
@@ -234,7 +253,8 @@ function mapPropsToState(state) {
     notices: state.basicStore.notices,
     isSwipeStart: state.basicStore.isSwipeStart,
     swipeWidth: state.basicStore.swipeWidth,
-    isSidebarOpen: state.basicStore.isSidebarOpen
+    isSidebarOpen: state.basicStore.isSidebarOpen,
+    navMenu: state.basicStore.navMenu,
   }
 }
 
