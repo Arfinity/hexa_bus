@@ -18,10 +18,6 @@ export function getFetch(url, callback) {
     axios.get(url,{
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Request-Headers': 'X-Requested-With, accept, content-type',
     },
   }).then(function(response){
     if(response.status == 200) {

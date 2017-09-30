@@ -34690,11 +34690,7 @@ function getFetch(url, callback) {
   var func = function func() {
     _axios2.default.get(url, {
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Request-Headers': 'X-Requested-With, accept, content-type'
+        'Content-Type': 'application/json'
       }
     }).then(function (response) {
       if (response.status == 200) {
