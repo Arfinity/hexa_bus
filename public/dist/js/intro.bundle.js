@@ -36949,11 +36949,7 @@ var Navigation = function (_Component3) {
             { className: 'date' },
             date
           ),
-          _react2.default.createElement(
-            'p',
-            { className: 'n-content' },
-            content
-          )
+          _react2.default.createElement('p', { className: 'n-content', dangerouslySetInnerHTML: { __html: content } })
         );
       });
     }
@@ -37170,7 +37166,6 @@ var Navigation = function (_Component3) {
         var url = _urlList.URL_LIST.API.DETAIL_INFO + '?mode=notice';
         var callback = function callback(response) {
           dispatch((0, _action.fetchNotice)(response.data));
-          console.log(response.data);
         };
         (0, _async_get.getFetch)(url, callback);
       }

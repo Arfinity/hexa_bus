@@ -67,9 +67,7 @@ class Navigation extends Component {
           <h5 className="date">
             {date}
           </h5>
-          <p className="n-content">
-            {content}
-          </p>
+          <p className="n-content" dangerouslySetInnerHTML={{ __html: content}} />
         </div>
       );
     });
@@ -234,7 +232,6 @@ class Navigation extends Component {
       const url = URL_LIST.API.DETAIL_INFO + '?mode=notice';
       const callback = (response) => {
         dispatch(fetchNotice(response.data));
-        console.log(response.data);
       }
       getFetch(url, callback);
     }
